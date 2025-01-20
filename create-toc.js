@@ -5,8 +5,10 @@ function createTable() {
       ignoreColumns: [0, 2, 3],
       extractor: {
         1: function (cellIndex, $cell) {
-          var authors = $cell.find('span').text().replace(' and ', ', ');
-          authors = authors.substring(0, authors.length - 2); // removes the final period
+          var authors = $cell.find('span').text().replace(' and ', ', ').trim();
+          if (authors[authors.length - 1] === ".") {
+            authors = authors.slice(0, -1); // removes the final period
+          }
           var authors_list = authors.split(",").map(function (item) {
             return item.trim();
           });
