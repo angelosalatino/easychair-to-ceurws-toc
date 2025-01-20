@@ -27,10 +27,11 @@ function createTable() {
       if (value['Decision'] == 'ACCEPT') {
         table_of_content += '&lt;li id="paper' + count + '"&gt;&lt;a href="paper' + count + '.pdf"&gt;\n';
         table_of_content += '&lt;span class="CEURTITLE"&gt;' + value['Authors, title']['title'] + '&lt;/span&gt;&lt;/a&gt;\n&lt;span class="CEURPAGES"&gt;XX-YY&lt;/span&gt;\n&lt;br&gt;\n';
+        var tag_authors = [];
         for (var i = 0; i < value['Authors, title']['authors'].length; i++) {
-          table_of_content += '&lt;span class="CEURAUTHOR"&gt;' + value['Authors, title']['authors'][i] + '&lt;/span&gt;,\n';
+          tag_authors.push('&lt;span class="CEURAUTHOR"&gt;' + value['Authors, title']['authors'][i] + '&lt;/span&gt;');
         }
-        table_of_content += '&lt;/li&gt;\n\n';
+        table_of_content += tag_authors.join(',\n')+'\n&lt;/li&gt;\n\n';
         count++;
       }
 
@@ -72,7 +73,7 @@ function checkLoadedScript(scripts_to_load) {
   }
 }
 
-const scripts_to_load = ["https://code.jquery.com/jquery-3.7.1.min.js", "https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"];
+var scripts_to_load = ["https://code.jquery.com/jquery-3.7.1.min.js", "https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"];
 for (var i = 0; i < scripts_to_load.length; i++) {
   loadScript(scripts_to_load[i]);
   console.log("lanched loadscript");
@@ -80,4 +81,4 @@ for (var i = 0; i < scripts_to_load.length; i++) {
 }
 
 
-const myInterval = setInterval(createTable, 2000);
+var myInterval = setInterval(createTable, 1000);
