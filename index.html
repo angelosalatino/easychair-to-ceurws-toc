@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>EasyChair to CEUR.WS Table of Contents</title>
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .markdown-body h1 {
+            padding-bottom: 0.3em;
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef;
+        }
+    </style>
+    <link rel="stylesheet" href="github-markdown.css">
+    <link rel="stylesheet" href="github-highlight.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('markdown', function (msg) {
+            document.getElementById("markdown").innerHTML = msg;
+            var cursor = document.getElementById("instant-markdown-cursor");
+            if (cursor) {
+                cursor.scrollIntoView();
+            }
+        });
+        socket.on('disconnect', function () {
+            window.close();
+        })
+    </script>
+</head>
+
+<body>
+    <article id="markdown" class="markdown-body">
+        <h1 id="find-it-at-ou">EasyChair to CEUR.WS Table of Contents</h1>
+        <p><em>EasyChair to CEUR.WS Table of Contents</em> is a bookmarklet that aims to create the Table of Contents for a CEUR Volume.</p>
+        <h1 id="about">About</h1>
+        Given your conference/workshop instance, head to "Status" tab, where you should have your accepted/rejected papers. <br />
+        Once in there, you can click the bookmarklet, and it will fill the html page with HTML toc, ready to be pasted in CEUR's index.html.<br />
+        <h1 id="requirements">Requirements</h1>
+        <ul>
+            <li>Have rights to see the status of papers of a given workshop/conference.</li>
+        </ul>
+        <h1 id="how-to-install">How to install</h1>
+        <p>Drag this link <a style="font-weight: bold;"
+                href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/angelosalatino/easychair-to-ceurws-toc/refs/heads/main/create-toc.js';})();">EC2C</a> and drop it into your Bookmarks bar</p>
+        <img src="finditatou.PNG" alt="" />
+    </article>
+
+
+</body>
+
+</html>
