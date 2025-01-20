@@ -31,4 +31,6 @@ Once in there, you can click the bookmarklet, and it will fill the html page wit
 
 ![Gif showing the result](toc-created.gif)
 
+Please note that author names and paper titles have been generated using GenAI.
+
 Enjoy ;)
